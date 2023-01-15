@@ -1,0 +1,131 @@
+@import url('/assets/styles/font.css');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+:root {
+  --primaryColor: rgb(1, 58, 1);
+  --secondaryColor: rgb(219, 245, 180);
+  --mainTransition: all 0.3s ease-in-out;
+}
+html{
+  font-size: 62.5%;
+}
+body{
+  font-family: 'Yekan';
+}
+.notes-container {
+  display: flex;
+}
+
+.notes__sidebar{
+  background-image: url('/assets/images/note.jpg');
+  object-position: center;
+  background-size: contain;
+  border-radius: 0 120px 0 0;
+  width: 350px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.notes__button{
+  background-color: var(--primaryColor);
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 50% 0;
+}
+.notes__add {
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  padding: 1.5rem 2rem;
+  border: 0;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: var(--mainTransition);
+  cursor: pointer;
+}
+.notes__add:hover {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+  border: 3px solid var(--secondaryColor);
+}
+.notes__preview{
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+.notes__title,
+.notes__text {
+  outline: 0;
+  border: 0;
+  width: 100%;
+  background-color: rgb(248, 245, 245);
+  border: 1px solid var(--primaryColor);
+  border-radius: 8px;
+  padding: 1rem;
+  display: none;
+}
+.notes__title {
+  height: 100px;
+}
+.notes__text {
+  margin-top: 3rem;
+  height: 250px;
+}
+.notes__title::placeholder {
+  position: absolute;
+  top: 10%;
+}
+.notes__text::placeholder {
+  position: absolute;
+  top: 6%;
+}
+.notes__list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 3rem;
+  padding: 3rem;
+}
+.notes__list-item {
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 5px 5px 5px #ddd;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.5rem;
+  max-height: 300px;
+  cursor: pointer;
+}
+.notes__list-item--selected{
+  border: 0.5px solid var(--primaryColor);
+}
+.notes__item-title{
+  border-bottom: 1px solid var(--primaryColor);
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+.notes__item-text{
+  overflow-y: auto;
+}
+.notes__item-text::-webkit-scrollbar{
+  display: none;
+}
+.fa-trash-alt{
+  color: rgb(138, 3, 3);
+}
