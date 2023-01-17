@@ -27,13 +27,12 @@ body{
   background-image: url('/assets/images/note.jpg');
   object-position: center;
   background-size: contain;
-  border-radius: 0 120px 0 0;
-  width: 350px;
+  border-radius: 0 160px 0 0;
+  width: 30%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
 }
 .notes__button{
   background-color: var(--primaryColor);
@@ -42,7 +41,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0 50% 0;
+  border-radius: 0 100px 0;
 }
 .notes__add {
   background-color: var(--secondaryColor);
@@ -64,9 +63,13 @@ body{
   width: 100%;
   height: 100%;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 .notes__title,
-.notes__text {
+.notes__body {
   outline: 0;
   border: 0;
   width: 100%;
@@ -77,17 +80,21 @@ body{
   display: none;
 }
 .notes__title {
-  height: 100px;
+  height: 30%;
+  font-size: 1.8rem;
 }
-.notes__text {
+.notes__body {
   margin-top: 3rem;
-  height: 250px;
+  height: 60%;
+  resize: none;
+  line-height: 2rem;
+  font-size: 1.6rem;
 }
 .notes__title::placeholder {
   position: absolute;
   top: 10%;
 }
-.notes__text::placeholder {
+.notes__body::placeholder {
   position: absolute;
   top: 6%;
 }
@@ -128,4 +135,23 @@ body{
 }
 .fa-trash-alt{
   color: rgb(138, 3, 3);
+}
+
+@media screen and (max-width:500px) {
+
+  .notes__add{
+    padding: 1.2rem 1.5rem;
+    font-size: 1.4rem;
+  }
+  .notes__preview{
+    padding: 1rem;
+  }
+  .notes__title{
+    font-size: 1.4rem;
+  }
+.notes__body{
+  font-size: 1.2rem;
+}
+
+  
 }
