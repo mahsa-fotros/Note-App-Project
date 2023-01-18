@@ -1,10 +1,11 @@
 export default class NotesView {
   constructor(root, handler) {
     this.root = root;
-    const { onNoteAdd, onNoteEdit, onNoteSelect } = handler;
+    const { onNoteAdd, onNoteEdit, onNoteSelect, onNoteDelete} = handler;
     this.onNoteAdd = onNoteAdd;
     this.onNoteEdit = onNoteEdit;
     this.onNoteSelect = onNoteSelect;
+    this.onNoteDelete = onNoteDelete;
 
     this.root.innerHTML = `
     <div class="notes__sidebar">
@@ -36,6 +37,9 @@ export default class NotesView {
         this.onNoteEdit(newTitle, newBody);
       });
     });
+
+    //hide note preview in first loading
+    this.updateNotePreviewVisibility(false);
   }
 
   _createListItemHTML(id, title, body, updated) {
@@ -49,7 +53,7 @@ export default class NotesView {
                     timeStyle: "short",
                   }
                 )}</div>
-                <div class="notes__item-icon">
+                <div class="notes__item-trash" data-note-id="${id}">
                 <i class="fas fa-trash-alt fa-lg"></i>
                 </div>
      </div>`;
@@ -72,5 +76,27 @@ export default class NotesView {
         })
     });
 
+   notesContainer.querySelectorAll(".notes__item-trash").forEach(noteItem=>{
+    noteItem.addEventListener("click",(e)=>{
+        e.stopPropagation();
+        this.onNoteDelete(noteItem.dataset.noteId);
+    })
+   });
+
+  }
+
+  updateActiveNote(note){
+    this.root.querySelector(".notes__title").value = note.title;
+    this.root.querySelector(".notes__body").value = note.body;
+
+    //add selected class
+    this.root.querySelectorAll(".notes__list-item").forEach(item=>{
+      item.classList.remove("notes__list-item--selected");
+    });
+    this.root.querySelector(`.notes__list-item[data-note-id="${note.id}"]`).classList.add("notes__list-item--selected");
+  }
+
+  updateNotePreviewVisibility(visible){
+    this.root.querySelector(".notes__preview").style.visibility= visible ? "visible" : "hidden";
   }
 }

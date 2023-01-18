@@ -10,8 +10,12 @@ const view = new NotesView(app,{
         console.log(newTitle,newBody);
     },
     onNoteSelect(noteId){
-        console.log(noteId)
+        console.log("select",noteId);
+    },
+    onNoteDelete(noteId){
+        console.log("delete",noteId)
     }
 });
 
 view.updateNotesList(NotesAPI.getAllNotes());
+view.updateActiveNote(NotesAPI.getAllNotes()[1]);
