@@ -27,7 +27,7 @@ body{
   background-image: url('/assets/images/note.jpg');
   object-position: center;
   background-size: contain;
-  border-radius: 0 160px 0 0;
+  border-radius: 0 140px 0 0;
   width: 30%;
   height: 100vh;
   display: flex;
@@ -42,6 +42,8 @@ body{
   justify-content: center;
   align-items: center;
   border-radius: 0 100px 0;
+  position: sticky;
+  top: 0;
 }
 .notes__add {
   background-color: var(--secondaryColor);
@@ -111,7 +113,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  justify-content: space-around;
   box-shadow: 5px 5px 5px #ddd;
   font-size: 1.5rem;
   text-align: center;
@@ -133,8 +135,18 @@ body{
 .notes__item-text::-webkit-scrollbar{
   display: none;
 }
+.note__item-date{
+  border-top: 1px solid rgb(1, 58, 1, 0.5);
+  padding-top: 0.5rem;
+}
 .fa-trash-alt{
   color: rgb(138, 3, 3);
+  padding: 2rem 1.5rem;
+  background-color: rgb(1, 58, 1, 0.3);
+  border-radius: 100%;
+}
+.fa-trash-alt:hover{
+  box-shadow: 2px 2px 2px rgb(1, 58, 1, 0.5);
 }
 
 @media screen and (max-width:500px) {
