@@ -25,8 +25,7 @@ export default class NotesView {
     const inputBody = this.root.querySelector(".notes__body");
 
     noteAddBtn.addEventListener("click", () => {
-      inputTitle.style.display = "block";
-      inputBody.style.display = "block";
+      this.updateNotePreviewVisibility(true);
       this.onNoteAdd();
     });
 
